@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --ink: #f4f7fb;
+  --muted: #8c98aa;
+  --line: rgba(148, 163, 184, 0.14);
+  --panel: rgba(15, 23, 32, 0.76);
+  --cyan: #67e8f9;
+  --coral: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: #070a0f;
+  background-image: linear-gradient(135deg, rgba(103, 232, 249, 0.06), transparent 34%), linear-gradient(315deg, rgba(251, 113, 133, 0.05), transparent 38%), linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px;
+  color: var(--ink);
+  font-family: "Space Grotesk", "Avenir Next", "Trebuchet MS", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.app-shell::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(90deg, transparent 0, rgba(103, 232, 249, 0.035) 50%, transparent 100%);
+  opacity: 0.8;
+}
+
+.start-screen {
+  width: min(100%, 64rem);
+  margin: 0 auto;
+}
+
+.start-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.start-leaderboard {
+  min-height: 20rem;
+}
+
+.leaderboard-scroll {
+  max-height: 25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(103, 232, 249, 0.45) rgba(148, 163, 184, 0.08);
+  scrollbar-width: thin;
+}
+
+.leaderboard-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leaderboard-scroll::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.08);
+  border-radius: 999px;
+}
+
+.leaderboard-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(103, 232, 249, 0.65), rgba(56, 189, 248, 0.3));
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+.leaderboard-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(103, 232, 249, 0.9), rgba(56, 189, 248, 0.55));
+  background-clip: padding-box;
+}
+
+.start-copy h1 {
+  max-width: 42rem;
+  margin-inline: auto;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+.start-copy p {
+  max-width: 34rem;
+  margin-inline: auto;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.start-form,
+.start-leaderboard {
+  border-color: var(--line);
+  background: linear-gradient(145deg, rgba(20, 29, 40, 0.9), rgba(10, 14, 20, 0.82));
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.045);
+}
+
+.start-form input:focus {
+  box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.1);
+}
+
+.game-header {
+  border-color: var(--line);
+  background: rgba(11, 17, 25, 0.72);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  max-width: 76rem;
+}
+
+.card-column {
+  aspect-ratio: 4 / 5;
+  width: min(100%, 45rem);
+  max-height: min(72vh, 50rem);
+  justify-self: center;
+}
+
+.prompt-panel {
+  min-height: 13rem;
+  border-color: var(--line);
+  background: linear-gradient(145deg, rgba(22, 31, 43, 0.88), rgba(11, 16, 23, 0.72));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 1.5rem 3rem rgba(0, 0, 0, 0.16);
+}
+
+.game-info h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.game-actions button {
+  min-height: 4.25rem;
+  border-color: var(--line);
+  background: rgba(18, 26, 36, 0.82);
+}
+
+.game-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 1rem;
+}
+
+.report-panel {
+  border-color: var(--line);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.18);
+}
+
+.results-shell > div {
+  border-color: var(--line);
+  background: linear-gradient(145deg, rgba(22, 28, 36, 0.9), rgba(10, 14, 20, 0.86));
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 720px) {
+  .start-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .game-layout,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-column {
+    max-height: 62vh;
+  }
+
+  .prompt-panel {
+    min-height: auto;
+  }
+
+  .start-copy h1,
+  .game-info h1 {
+    letter-spacing: -0.045em;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 980px) {
+  .game-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.8fr);
+    gap: 2rem;
+  }
+}
